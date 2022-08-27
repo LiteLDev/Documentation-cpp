@@ -1,9 +1,5 @@
 name: Build Documentation
 
-permissions:
-  id-token: write
-  pages: write
-
 on: 
   push:
   workflow_dispatch:
@@ -35,5 +31,15 @@ jobs:
         with:
           path: docs/
           
-      - uses: actions/deploy-pages@v1.0.10
-          
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v1.0.10
