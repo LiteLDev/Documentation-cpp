@@ -1,0 +1,35 @@
+name: Build Documentation
+
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - uses: mattnotmitt/doxygen-action@1.9.4
+        with:
+          doxyfile-path: ./Doxyfile_en
+          additional-packages: graphviz
+          
+      - uses: mattnotmitt/doxygen-action@1.9.4
+        with:
+          doxyfile-path: ./Doxyfile_zh-Hans
+          additional-packages: graphviz
+          
+      - uses: mattnotmitt/doxygen-action@1.9.4
+        with:
+          doxyfile-path: ./Doxyfile_raw
+          additional-packages: graphviz
+          
+      - uses: actions/upload-pages-artifact@v1.0.3
+        with:
+          path: docs/
+          
+      - uses: actions/deploy-pages@v1.0.10
+          
