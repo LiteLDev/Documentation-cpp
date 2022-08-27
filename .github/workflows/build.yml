@@ -2,16 +2,15 @@ name: Build Documentation
 
 permissions:
   id-token: write
+  pages: write
 
 on: 
   push:
-  
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
         with:
@@ -31,7 +30,7 @@ jobs:
 #         with:
 #           doxyfile-path: ./Doxyfile_raw
 #           additional-packages: graphviz
-          
+
       - uses: actions/upload-pages-artifact@v1.0.3
         with:
           path: docs/
