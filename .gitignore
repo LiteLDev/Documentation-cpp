@@ -1,0 +1,7 @@
+# Doxygen generated documentation
+docs/en/*
+docs/raw/*
+docs/zh-Hans/*
+
+# Visual Studio Code files
+.vscode
