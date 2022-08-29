@@ -1,7 +1,8 @@
 name: Build Documentation
 
-on: 
-  push:
+on:
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,17 +14,17 @@ jobs:
           submodules: true
 
       - run: python preprocessor.py
-          
+
       - uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_en
           additional-packages: graphviz
-          
+
       - uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_zh-Hans
           additional-packages: graphviz
-          
+
       - uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_raw
@@ -32,7 +33,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v1.0.3
         with:
           path: docs/
-          
+
   deploy:
     environment:
       name: github-pages
