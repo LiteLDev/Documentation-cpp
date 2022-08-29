@@ -9,28 +9,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout the repository
+        uses: actions/checkout@v3
         with:
           submodules: true
 
-      - run: python preprocessor.py
+      - name: Preprocess the SDK files
+        run: python preprocessor.py
 
-      - uses: mattnotmitt/doxygen-action@1.9.4
+      - name: Generate English documentation
+        uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_en
           additional-packages: graphviz
 
-      - uses: mattnotmitt/doxygen-action@1.9.4
+      - name: Generate Chinese documentation
+        uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_zh-Hans
           additional-packages: graphviz
 
-      - uses: mattnotmitt/doxygen-action@1.9.4
+      - name: Generate API reference
+        uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_raw
           additional-packages: graphviz
 
-      - uses: actions/upload-pages-artifact@v1.0.3
+      - name: Upload the artifact
+        uses: actions/upload-pages-artifact@v1.0.3
         with:
           path: docs/
 
@@ -44,5 +50,6 @@ jobs:
       pages: write
     runs-on: ubuntu-latest
     steps:
-      - id: deployment
+      - name: Deploy the pages
+        id: deployment
         uses: actions/deploy-pages@v1.0.10
