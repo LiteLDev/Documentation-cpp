@@ -36,7 +36,7 @@ import os
 import re
 
 regex_list = [
-    ' *\/\*{2}\n( +\* @symbol \S*\n| +\* @vtable \S*\n)* +\*\/'
+    ' *\/\*{2}\n( +\* @hash.*\n| +\* @symbol.*\n| +\* @vftbl.*\n)* +\*\/\n'
 ]
 
 if __name__ == '__main__':
