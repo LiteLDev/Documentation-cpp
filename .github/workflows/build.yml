@@ -32,7 +32,7 @@ jobs:
       - name: Generate API reference
         uses: mattnotmitt/doxygen-action@1.9.4
         with:
-          doxyfile-path: ./Doxyfile_raw
+          doxyfile-path: ./Doxyfile_api
           additional-packages: graphviz
 
       - name: Upload the artifact

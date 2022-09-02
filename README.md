@@ -24,13 +24,13 @@ Generate Simplified Chinese documentation to `/docs/zh-Hans/`:
 doxygen Doxyfile_zh-Hans
 ```
 
-Generate raw English documentation for LiteLoaderBDS development to `/docs/raw/`:
+Generate raw English documentation for LiteLoaderBDS development to `/docs/api/`:
 
 ```sh
 doxygen Doxyfile_raw
 ```
 
-All documentation will be generated in `/docs/en/`, `/docs/zh-Hans/` and `/cocs/raw/`.
+All documentation will be generated in `/docs/en/`, `/docs/zh-Hans/` and `/docs/api/`.
 
 ## Contribution
 
