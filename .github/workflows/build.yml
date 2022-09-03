@@ -13,6 +13,12 @@ jobs:
         with:
           submodules: true
 
+      - name: Generate API reference
+        uses: mattnotmitt/doxygen-action@1.9.4
+        with:
+          doxyfile-path: ./Doxyfile_api
+          additional-packages: graphviz
+
       - name: Preprocess the SDK files
         run: python preprocessor.py
 
@@ -26,12 +32,6 @@ jobs:
         uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_zh-Hans
-          additional-packages: graphviz
-
-      - name: Generate API reference
-        uses: mattnotmitt/doxygen-action@1.9.4
-        with:
-          doxyfile-path: ./Doxyfile_api
           additional-packages: graphviz
 
       - name: Upload the artifact
