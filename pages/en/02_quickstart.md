@@ -204,7 +204,13 @@ Now you can build the plugin and test it in LiteLoaderBDS.
 
 ## Debug Your Plugin
 
-*To be implemented*
+Open your Visual Studio and open your plugin folder, and VS will automatically configure cmake project.
+
+Then change Solution Explorer to cmake target view, and right click the project, then select Add Debug Configuration to create a launch.vs.json.
+
+Then modoify the projectTraget value to your BDS executable.
+
+Now you can use F5 to debug you plugin!
 
 ## What's Next?
 
