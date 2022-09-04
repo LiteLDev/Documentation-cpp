@@ -204,13 +204,13 @@ Now you can build the plugin and test it in LiteLoaderBDS.
 
 ## Debug Your Plugin
 
-Open your Visual Studio and open your plugin folder, and VS will automatically configure cmake project.
+Open the directory of your plugin in Microsoft Visual Studio, and the project will be configured automatically.
 
-Then change Solution Explorer to cmake target view, and right click the project, then select Add Debug Configuration to create a launch.vs.json.
+Change **Solution Explorer** to CMake target view, right click on the project, and then select **Add Debug Configuration** to create `launch.vs.json`.
 
-Then modoify the projectTraget value to your BDS executable.
+Then modify the project target value to the BDS executable `bedrock_server_mod.exe`.
 
-Now you can use F5 to debug you plugin!
+Press F5 to debug you plugin.
 
 ## What's Next?
 
