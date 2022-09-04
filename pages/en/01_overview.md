@@ -27,15 +27,21 @@ This piece is aimed at presenting a welcome title to newly joined players and hi
 
 void PluginInit()
 {
-    Logger logger;
+  Logger logger;
 
-    Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
-        auto player = event.mPlayer;
+  Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
+    auto player = event.mPlayer;
+    
+    player->sendTitlePacket(
+      "Welcome!",
+      TitleType::SetTitle,
+      /* FadeInDuration =  */ 1,
+      /* RemainDuration =  */ 2,
+      /* FadeOutDuration =  */ 1
+    );
 
-        player->sendTitlePacket("Welcome!", TitleType::SetTitle, /* FadeInDuration =  */ 1, /* RemainDuration =  */ 2, /* FadeOutDuration =  */ 1);
-
-        logger.info("Player {} has joined the server.", player->getName());
-    });
+    logger.info("Player {} has joined the server.", player->getName());
+  });
 }
 
 ```
