@@ -1,3 +1,4 @@
-# Main Page
+# 主页
 
-This guide is an overview and explains the important features; details are found in [the API eference](https://cpp.docs.litebds.com/api).
+本文档介绍了LiteLoaderBDS C++插件开发的重点。
+如果需要详细的API文档，请访问[API Reference](https://cpp.docs.litebds.com/api).

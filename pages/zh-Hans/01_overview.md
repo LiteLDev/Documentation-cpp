@@ -1,4 +1,6 @@
-# Overview
+# 概览
+
+*尚未翻译*
 
 LiteLoaderBDS C++ plugin, in brief, is the modifier to Minecraft Bedrock Dedicated Server (BDS), providing plentiful gameplayes, game rules, and utilities in Minecraft.
 In our point of view, LiteLoaderBDS C++ plugin is the most hardcore approach to interact with low-level code of BDS, which is both the most outstanding advantage and the worst drawback for developers.

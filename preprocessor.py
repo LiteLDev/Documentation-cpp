@@ -32,11 +32,12 @@
     USA
 """
 
+
 import os
 import re
-
 regex_list = [
-    ' *\/\*{2}\n( +\* @hash.*\n| +\* @symbol.*\n| +\* @vftbl.*\n)* +\*\/\n'
+    ' *\/\*{2}\n( +\* @hash.*\n| +\* @symbol.*\n| +\* @vftbl.*\n)* +\*\/\n', # comments before methods
+    ' *\/\*\*\n * \* @brief MC class \w+\.\n * \*\n * \*\/\n' # comments before classes
 ]
 
 if __name__ == '__main__':
