@@ -8,6 +8,16 @@
 如果您已经拥有了一些插件开发经验，请开始浏览指南。
 我们相信这些指南能为您的插件带来新生。
 
-* @subpage kvdb_howto
+* @subpage dynamic_command_howto
+* @subpage event_howto
+* @subpage formui_howto
 * @subpage hook_howto
+* @subpage i18n_howto
+* @subpage kvdb_howto
+* @subpage logger_howto
+* @subpage particle_howto
 * @subpage patch_howto
+* @subpage permission_howto
+* @subpage remote_call_howto
+* @subpage schedule_howto
+* @subpage send_packet_howto
