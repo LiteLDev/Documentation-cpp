@@ -4,12 +4,14 @@
 
 ### For You
 
-You'll need to know the basic syntax of C++. For a refresher to C++, see the [C++ tutorial](https://cplusplus.com/doc/tutorial/).
+You'll need to know the basic syntax of C++.
+For a refresher to C++, see the [C++ tutorial](https://cplusplus.com/doc/tutorial/).
 So should you have successfully run LiteLoaderBDS at least one time and have skimmed the [LiteLoaderBDS documentation](https://docs.litebds.com/en/#/README) except the pages for plugin development in order to comprehense how LiteLoaderBDS works.
 
 ### For Your Computer
 
-Currently we only support building plugins on a tiny set of platforms. If you could assist us in leveraging the supported platforms, we would sincerely appreciate it.
+Currently we only support building plugins on a tiny set of platforms.
+If you could assist us in leveraging supported platforms, we would sincerely appreciate it.
 
 The platforms required is shown below:
 
@@ -36,39 +38,100 @@ What's more, we highly recommend that you register a GitHub account, not only fo
 
 Now that you have got the development environment ready, it is time that you create your first plugin from scratch.
 
-1. Get the repository URL
-    * If you would like to host your code on GitHub, visit [the plugin template repository](https://github.com/LiteLDev/PluginTemplate-cpp) and click the button with text "Use this template", then filling in the form to create your plugin repository.
-    Then copy the URL of your repository.
+### Get the repository URL
 
-    * If you would just like to develop locally, copy `https://github.com/LiteLDev/PluginTemplate-cpp` to your clipboard.
+* If you would like to host your code on GitHub, visit [the plugin template repository](https://github.com/LiteLDev/PluginTemplate-cpp) and click the button with text "Use this template", then filling in the form to create your plugin repository.
+Then copy the URL of your repository.
 
-2. Clone the repository
-    * Open PowerShell or Command Prompt where you would like to put the repository, and then run `git clone <repository URL>`.
-    Note that you should replace the tag `<repository URL>` with the URL you copied in the previous step.
+    ![Use the Template](../../assets/quickstart_01.png)
 
-    * Run `git submodule init` to initialize the SDK.
+* If you would just like to develop locally, copy `https://github.com/LiteLDev/PluginTemplate-cpp` to your clipboard.
 
-3. Configure the plugin
-    * Modify the configurations in **/src/Version.h** according to the instructions inside the file.
-    Remember to delete the line starting with `static_assert`.
+### Clone the repository
 
-4. Build the plugin
-    * If you would like to build with CMake in Visual Studio Code **(recommended)**, simply open the repository directory in Visual Studio Code, choose **Release** build variant (or others as you like), and click **Build**.
-    Then the plugin will be generated in **/build/Release/Plugin.dll** (or others depending on the build variant you chose).
+* Open PowerShell or Command Prompt where you would like to put the repository, and then run `git clone --recurse-submodules <repository URL>`.
+Note that you should replace the tag `<repository URL>` with the URL you copied in the previous step.
+And the flag `--recurse-submodules` is required.
 
-    * If you would like to build with CMake directly, create the directory **/build/**. Then open PowerShell or Command Prompt in **/build/** and run `cmake .. && cmake --build . -j`.
-    Then the plugin will be generated as **/build/Plugin.dll**.
+    ![Git Clone](../../assets/quickstart_02.png)
 
-    * If you would like to build with Microsoft Visual Studio, open the repository directory in Microsoft Visual Studio, click **Build** -> **Build All** or just press `Ctrl` + `Shift` + `B` to build.
-    Then the plugin will be generated as **/out/x64-Debug/Plugin.dll**.
+### Configure the plugin
 
-5. Run your plugin
-    * Copy the **Plugin.dll** generated in the previous step to the **/plugin/** directory of the BDS directory (if not found, you should apply LiteLoaderBDS to BDS first. Please refer to [the instructions](https://docs.litebds.com/en/#/Usage)).
-    * Run **/bedrock_server_mod.dll** in the BDS directory.
+Modify the configurations in `/src/Version.h` following the instructions inside the file.
+Remember to delete the line starting with "static_assert".
+Here we are explaining the configurations in detail.
 
-6. Observe the plugin behavior
-    * Now you can see the text `Hello, world!` shown on the terminal.
-    Congratulations to you for successfully creating your first plugin!
+First fill in the basic information, the name of the plugin, a brief one-line description and your name included.
+
+```cpp
+// The basic descriptions of your plugin
+#define PLUGIN_NAME "My Plugin"
+#define PLUGIN_INTRODUCTION "My Plugin is a plugin printing \"Hello, World!\" in the console."
+#define PLUGIN_AUTHOR "Me"
+```
+
+Then set the plugin version.
+Please refer to https://semver.org for more reference.
+We provide three status preset: **dev**, **beta** and **release**, by the macro `PLUGIN_VERSION_STATUS` with `PLUGIN_VERSION_DEV`, `PLUGIN_VERSION_BETA` and `PLUGIN_VERSION_RELEASE`.
+Some compiler and link behaviors varies with different preset, but you do not need to care about it.
+If the version is still under development, choose **dev**.
+If the version is the first one of the minor version to be published, or you don't have confidence in its statbility, choose **beta**.
+If the version is ready for everyone to use without doubt, choose **release**.
+You should only regard the **release** versions as the formal published versions.
+
+```cpp
+// The version of your plugin. If you do not know how to set it, please refer
+// to https://semver.org/ .
+#define PLUGIN_VERSION_MAJOR 1
+#define PLUGIN_VERSION_MINOR 0
+#define PLUGIN_VERSION_REVISION 0
+#define PLUGIN_VERSION_BUILD 0
+
+// The stage of your plugin, which can be PLUGIN_VERSION_DEV, PLUGIN_VERSION_BETA
+// and PLUGIN_VERSION_RELEASE
+#define PLUGIN_VERSION_STATUS PLUGIN_VERSION_DEV
+```
+
+Next, set the target BDS protocol version.
+A few developers tend to ignore this configuration and just comment it.
+Nevertheless, we highly NOT recommend you do so, for some APIs varies accross versions, which may cause severe unexpectable exceptions or even corruption of files.
+
+You should have LiteLoaderBDS and BDS installed.
+And then run **bedrock_server_mod.exe** and locate this line:
+
+![Protocol Version Line](../../assets/quickstart_03.png)
+
+Check the protocol version.
+In the image above, the protocol version is 544.
+
+Fill in the protocol version.
+
+```cpp
+#define TARGET_BDS_PROTOCOL_VERSION 545
+```
+
+### Build the plugin
+
+* If you would like to build with CMake in Visual Studio Code (recommended), simply open the repository directory in Visual Studio Code, choose **Release** build variant (or others as you like), and click **Build**.
+Then the plugin will be generated in `/build/Release/Plugin.dll` (or others depending on the build variant you chose).
+
+* If you would like to build with CMake directly, create the directory `/build/`. Then open PowerShell or Command Prompt in `/build/` and run `cmake .. && cmake --build . -j`.
+Then the plugin will be generated as `/build/Plugin.dll`.
+
+* If you would like to build with Microsoft Visual Studio, open the repository directory in Microsoft Visual Studio, click **Build** -> **Build All** or just press `Ctrl` + `Shift` + `B` to build.
+Then the plugin will be generated as `/out/x64-Debug/Plugin.dll`.
+
+### Run your plugin
+
+opy the `Plugin.dll` generated in the previous step to the `/plugin/` directory of the BDS directory (if not found, you should apply LiteLoaderBDS to BDS first. Please refer to [the instructions](https://docs.litebds.com/en/#/Usage)).
+
+Run `/bedrock_server_mod.exe` in the BDS directory.
+
+### Observe the plugin behavior
+
+Now you can see the text "Hello, world!" shown on the terminal.
+
+Congratulations to you for successfully creating your first plugin!
 
 ## Make Furthur Modifications
 
@@ -84,123 +147,117 @@ First, the interaction with the Minecraft world.
 LiteLoaderBDS provides plentiful APIs performing operations to the world directly.
 Via these APIs, you can get an entity or a block, set a block, or run a line of command.
 However, the definitions of these APIs are not collected in a single header file, but splitted into multiple classes.
-You can refer to **/SDK/Header/GlobalServiceAPI.h** to see the classes containing these APIs.
+You can refer to `/SDK/Header/GlobalServiceAPI.h` to see the classes containing these APIs.
 In this article, we will use the **Level** class, the most common class for plugin development.
 
 Second, the watcher on the occurrence of some events.
 Though BDS has not provided any event related APIs like those in GameTest, we hooked some common events for you.
-To check out all of them, you can have a glance at **/SDK/Header/EventAPI.h**.
+To check out all of them, you can have a glance at `/SDK/Header/EventAPI.h`.
 In this article, we will use the **PlayerJoinEvent**.
 
 Following the instructions below, you will create a plugin giving every player an emerald and show welcome banner on every player's screen when they join the game as well as showing the latest joined player's name when someone types command `latest`.
 Are you ready?
 Let's start.
 
-Open **/src/Plugin.cpp**, and follow instructions below.
+Open `/src/Plugin.cpp`, and follow instructions below.
 
 1. Include necessary headers.
 
-```cpp
+    ```cpp
+    #include <string>
 
-#include <string>
+    #include <MC/CommandOrigin.hpp>
+    #include <MC/CommandOutput.hpp>
+    #include <MC/ItemStack.hpp>
+    #include <MC/Level.hpp>
+    #include <MC/Player.hpp>
+    #include <MC/Types.hpp>
 
-#include <MC/CommandOrigin.hpp>
-#include <MC/CommandOutput.hpp>
-#include <MC/ItemStack.hpp>
-#include <MC/Level.hpp>
-#include <MC/Player.hpp>
-#include <MC/Types.hpp>
+    #include <DynamicCommandAPI.h>
+    #include <EventAPI.h>
+    #include <GlobalServiceAPI.h>
+    ```
 
-#include <DynamicCommandAPI.h>
-#include <EventAPI.h>
-#include <GlobalServiceAPI.h>
-
-```
-
-So many headers, right?
-To better manage them, we recommend that you include a new header if and only if the type of some variables or constants is defined in the header, or without including the header, your plugin cannot be built.
-Meanwhile, you should group these headers.
-One possible policy is grouping headers started with **MC/** into a group, STL headers into another group, and all other headers into the final group .
+    So many headers, right?
+    To better manage them, we recommend that you include a new header if and only if the type of some variables or constants is defined in the header, or without including the header, your plugin cannot be built.
+    Meanwhile, you should group these headers.
+    One possible policy is grouping headers started with `MC/` into a group, STL headers into another group, and all other headers into the final group.
 
 2. Define the global variables.
 
-```cpp
+    ```cpp
+    std::string latest_player_xuid;
+    ```
 
-std::string latest_player_xuid;
-
-```
-
-This variable is used to store the XUID of the latest joined player.
+    This variable is used to store the XUID of the latest joined player.
 
 3. Listen to the event.
-Code below should be placed in the **PluginInit()** function.
 
-```cpp
+    Code below should be placed in the `PluginInit()` function.
 
-Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
-  // Give the item to the player
-  auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
-  event.mPlayer->giveItem(item);
+    ```cpp
+    Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
+    // Give the item to the player
+    auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
+    event.mPlayer->giveItem(item);
 
-  // Show banner on every player's screen
-  auto all_player_list = Level::getAllPlayers();
-  for (auto* player : all_player_list) {
-    player->sendTitlePacket(
-      event.mPlayer->getRealName() + "joined",
-      TitleType::SetTitle,
-      /* FadeInDuration = */ 1,
-      /* RemainDuration = */ 3,
-      /* FadeOutDuration = */ 1
-    )
-  }
+    // Show banner on every player's screen
+    auto all_player_list = Level::getAllPlayers();
+    for (auto* player : all_player_list) {
+        player->sendTitlePacket(
+        event.mPlayer->getRealName() + "joined",
+        TitleType::SetTitle,
+        /* FadeInDuration = */ 1,
+        /* RemainDuration = */ 3,
+        /* FadeOutDuration = */ 1
+        )
+    }
 
-  return true;
-});
+    return true;
+    });
+    ```
 
-```
+    In this piece of code, we subscribe to PlayerJoinEvent with a anonymous callback function.
 
-In this piece of code, we subscribe to PlayerJoinEvent with a anonymous callback function.
+    In the callback function, we firstly create an item stack, which representing a collection of identical items that can be picked up at a time, whose identifier is `minecraft:emerald` and whose stack count is one.
+    Then we directly extract the player from the event object and give the player the item stack.
 
-In the callback function, we firstly create an item stack, which representing a collection of identical items that can be picked up at a time, whose identifier is `minecraft:emerald` and whose stack count is one.
-Then we directly extract the player from the event object and give the player the item stack.
+    Then we attempt to get all players, iterating over all of them and sending the newly joined player's name to them as titles.
 
-Then we attempt to get all players, iterating over all of them and sending the newly joined player's name to them as titles.
-
-Finally, we return true, indicating that the player can join the server.
-Otherwise, if we return false, the player will be rejected from the server.
-(If you are creative and sharp enough, you may come up with the idea that these feature can be used to create a customized whitelist rule set.)
+    Finally, we return true, indicating that the player can join the server.
+    Otherwise, if we return false, the player will be rejected from the server.
+    (If you are creative and sharp enough, you may come up with the idea that these feature can be used to create a customized whitelist rule set.)
 
 4. Register the command
-Code below should be placed in the **PluginInit()** function.
 
-```cpp
+    Code below should be placed in the **PluginInit()** function.
 
-DynamicCommand::setup(
-  /* name = */ "latest",
-  /* description = */ "Get latest player.",
-  /* enums = */ {},
-  /* params = */ {},
-  /* overloads = */ {
-    {},
-  },
-  /* callback = */ [](
-    DynamicCommand const& command,
-    CommandOrigin const& origin,
-    CommandOutput& output,
-    std::unordered_map<std::string, DynamicCommand::Result>& results
-  ) {
-    output.success(
-      std::string("The latest player's name is ") +
-      Global<Level>->getPlayer(latest_player_xuid)->getRealName()
+    ```cpp
+    DynamicCommand::setup(
+    /* name = */ "latest",
+    /* description = */ "Get latest player.",
+    /* enums = */ {},
+    /* params = */ {},
+    /* overloads = */ {
+        {},
+    },
+    /* callback = */ [](
+        DynamicCommand const& command,
+        CommandOrigin const& origin,
+        CommandOutput& output,
+        std::unordered_map<std::string, DynamicCommand::Result>& results
+    ) {
+        output.success(
+        std::string("The latest player's name is ") +
+        Global<Level>->getPlayer(latest_player_xuid)->getRealName()
+        );
+    }
     );
-  }
-);
+    ```
 
-```
+    If you are interested in the meanings of the parameters, please refer to the DynamicCommand class.
 
-If you are interested in the meanings of the parameters, please refer to the DynamicCommand class.
-
-Now you can build the plugin and test it in LiteLoaderBDS.
+    Now you can build the plugin and test it in LiteLoaderBDS.
 
 ## Debug Your Plugin
 
