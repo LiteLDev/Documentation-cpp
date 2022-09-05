@@ -10,3 +10,4 @@
 * @subpage moving_light_source
 * @subpage chain_gathering
 * @subpage multilingual_welcome
+* @subpage survival_fly

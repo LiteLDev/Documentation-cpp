@@ -10,3 +10,4 @@ The analysis and demonstration will help you develop independently soon.
 * @subpage moving_light_source
 * @subpage chain_gathering
 * @subpage multilingual_welcome
+* @subpage survival_fly
