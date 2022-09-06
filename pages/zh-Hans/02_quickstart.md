@@ -43,7 +43,7 @@
 * 如果您想在GitHub上托管你的代码，请访问[插件模板库](https://github.com/LiteLDev/PluginTemplate-cpp)，点击文本“Use this template”的按钮，然后填写表格，创建您的插件库。
 然后复制你的仓库的URL。
 
-    ![Use the Template](../../assets/quickstart_01.png)
+    ![Use the Template](../images/quickstart_01.png)
 
 * 如果您只想在本地开发，请复制`https://github.com/LiteLDev/PluginTemplate-cpp`到您的剪贴板上。
 
@@ -53,7 +53,7 @@
 注意，你应该用你在上一步复制的URL替换标签`<repository URL>`。
 而且标志`--recurse-submodules`是必须的。
 
-    ![Git Clone](../../assets/quickstart_02.png)
+    ![Git Clone](../images/quickstart_02.png)
 
 ### 配置该插件
 
@@ -62,11 +62,12 @@
 这里我们详细解释一下配置。
 
 首先填写基本信息，插件的名称，简短的单行描述和包括你的名字。
+请注意，插件名称应当仅包含英文字母、数字、短横线（-）和下划线（_）。
+虽然目前版本的LiteLodaerBDS不对此检查，但出于安全性考虑，未来版本可能会不再允许其它字符的出现。
 
 ```cpp
-// The basic descriptions of your plugin
-#define PLUGIN_NAME "My Plugin"
-#define PLUGIN_INTRODUCTION "My Plugin is a plugin printing \"Hello, World!\" in the console."
+#define PLUGIN_NAME "HelloWorldPrinter"
+#define PLUGIN_INTRODUCTION "Prints \"Hello, World!\" in the console."
 #define PLUGIN_AUTHOR "Me"
 ```
 
@@ -80,15 +81,11 @@
 你应该只把**release**版本视为正式发布的版本。
 
 ```cpp
-// The version of your plugin. If you do not know how to set it, please refer
-// to https://semver.org/ .
 #define PLUGIN_VERSION_MAJOR 1
 #define PLUGIN_VERSION_MINOR 0
 #define PLUGIN_VERSION_REVISION 0
 #define PLUGIN_VERSION_BUILD 0
 
-// The stage of your plugin, which can be PLUGIN_VERSION_DEV, PLUGIN_VERSION_BETA
-// and PLUGIN_VERSION_RELEASE
 #define PLUGIN_VERSION_STATUS PLUGIN_VERSION_DEV
 ```
 
@@ -99,7 +96,7 @@
 你应该已经安装了LiteLoaderBDS和BDS。
 然后运行**bedrock_server_mod.exe**并找到这一行：
 
-![Protocol Version Line](../../assets/quickstart_03.png)
+![Protocol Version Line](../images/quickstart_03.png)
 
 检查协议版本。
 在上面的图片中，协议版本是544。
@@ -272,6 +269,7 @@ LiteLoaderBDS提供大量的API，直接对世界进行操作。
 ## 下一步是什么？
 
 如果你仍然感到困惑，没有准备好自己创建一个插件，请看我们的[教程](90_tutorials_index.md)。
+我们高度建议你阅读[死亡计数器](tutorials/death_counter.md)。这是对一个简单的玩家死亡计数器插件[LLDeathCounter](https://github.com/Futrime/LLDeathCounter)的分析。
 
 如果你对插件开发中更高级的技术感兴趣，请看我们的[指南](91_guides_index.md)。
 

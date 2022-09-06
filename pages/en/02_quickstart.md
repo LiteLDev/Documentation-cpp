@@ -43,7 +43,7 @@ Now that you have got the development environment ready, it is time that you cre
 * If you would like to host your code on GitHub, visit [the plugin template repository](https://github.com/LiteLDev/PluginTemplate-cpp) and click the button with text "Use this template", then filling in the form to create your plugin repository.
 Then copy the URL of your repository.
 
-    ![Use the Template](../../assets/quickstart_01.png)
+    ![Use the Template](../images/quickstart_01.png)
 
 * If you would just like to develop locally, copy `https://github.com/LiteLDev/PluginTemplate-cpp` to your clipboard.
 
@@ -53,7 +53,7 @@ Then copy the URL of your repository.
 Note that you should replace the tag `<repository URL>` with the URL you copied in the previous step.
 And the flag `--recurse-submodules` is required.
 
-    ![Git Clone](../../assets/quickstart_02.png)
+    ![Git Clone](../images/quickstart_02.png)
 
 ### Configure the plugin
 
@@ -62,9 +62,10 @@ Remember to delete the line starting with "static_assert".
 Here we are explaining the configurations in detail.
 
 First fill in the basic information, the name of the plugin, a brief one-line description and your name included.
+Please pay attention that the plugin name should only contain English alphabet, digit, dash(-) and underscore(_).
+Though currently LiteLoaderBDS does not check it, future versions of LiteLoaderBDS may forbid other characters in consideration of security.
 
 ```cpp
-// The basic descriptions of your plugin
 #define PLUGIN_NAME "My Plugin"
 #define PLUGIN_INTRODUCTION "My Plugin is a plugin printing \"Hello, World!\" in the console."
 #define PLUGIN_AUTHOR "Me"
@@ -80,15 +81,11 @@ If the version is ready for everyone to use without doubt, choose **release**.
 You should only regard the **release** versions as the formal published versions.
 
 ```cpp
-// The version of your plugin. If you do not know how to set it, please refer
-// to https://semver.org/ .
 #define PLUGIN_VERSION_MAJOR 1
 #define PLUGIN_VERSION_MINOR 0
 #define PLUGIN_VERSION_REVISION 0
 #define PLUGIN_VERSION_BUILD 0
 
-// The stage of your plugin, which can be PLUGIN_VERSION_DEV, PLUGIN_VERSION_BETA
-// and PLUGIN_VERSION_RELEASE
 #define PLUGIN_VERSION_STATUS PLUGIN_VERSION_DEV
 ```
 
@@ -99,7 +96,7 @@ Nevertheless, we highly NOT recommend you do so, for some APIs varies accross ve
 You should have LiteLoaderBDS and BDS installed.
 And then run **bedrock_server_mod.exe** and locate this line:
 
-![Protocol Version Line](../../assets/quickstart_03.png)
+![Protocol Version Line](../images/quickstart_03.png)
 
 Check the protocol version.
 In the image above, the protocol version is 544.
@@ -272,6 +269,7 @@ Press F5 to debug you plugin.
 ## What's Next?
 
 If you are still confused and not ready to create a plugin on your own, please see our [tutorials](90_tutorials_index.md).
+We highly recommend you read [Death Counter](tutorials/death_counter.md), which is an analysis of [LLDeathCounter](https://github.com/Futrime/LLDeathCounter), a simple player death recorder.
 
 If you are interested in more advanced techniques in plugin development, please see our [guides](91_guides_index.md).
 
