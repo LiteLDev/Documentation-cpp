@@ -44,6 +44,14 @@
         gtag('config', 'G-QZT6H7YC7Q');
     </script>
 
+    <!-- i18n support -->
+    <script>
+        function switchLanguage(langcode) {
+            const regex = /^\/[a-zA-Z-]+/;
+            location.assign(location.pathname.replace(regex, `/${langcode}`));
+        }
+    </script>
+
     <div id="top">
         <!-- do not remove this div, it is closed by doxygen! -->
 

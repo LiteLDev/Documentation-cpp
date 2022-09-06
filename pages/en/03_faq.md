@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Frequently Asked Questions {#faq}
 
 ## How to get ... ?
 

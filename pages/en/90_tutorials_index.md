@@ -1,4 +1,4 @@
-# Tutorials
+# Tutorials {#tutorials_index}
 
 In each tutorial, we will analyze a complete plugin.
 

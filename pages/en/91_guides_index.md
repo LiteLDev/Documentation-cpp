@@ -1,4 +1,4 @@
-# Guides
+# Guides {#guide_index}
 
 For intermediate and advanced developers, guides are the right places to learn new features or complex components of LiteLoaderBDS.
 
