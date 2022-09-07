@@ -197,6 +197,7 @@ LiteLoaderBDS提供大量的API，直接对世界进行操作。
     // Give the item to the player
     auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
     event.mPlayer->giveItem(item);
+    delete item;
 
     // Show banner on every player's screen
     auto all_player_list = Level::getAllPlayers();

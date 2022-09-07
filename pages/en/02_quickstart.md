@@ -197,6 +197,7 @@ Open `/src/Plugin.cpp`, and follow instructions below.
     // Give the item to the player
     auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
     event.mPlayer->giveItem(item);
+    delete item;
 
     // Show banner on every player's screen
     auto all_player_list = Level::getAllPlayers();
