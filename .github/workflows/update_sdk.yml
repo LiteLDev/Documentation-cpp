@@ -2,6 +2,7 @@ name: Update SDK
 
 on:
   repository_dispatch:
+    types: [on-push-sdk]
   workflow_dispatch:
 
 jobs:
