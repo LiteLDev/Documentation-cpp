@@ -1,8 +1,8 @@
 name: Update SDK
 
 on:
-  repository_dispatch:
-    types: [on-push-sdk]
+  schedule:
+    - cron: "0"
   workflow_dispatch:
 
 jobs:
