@@ -272,6 +272,8 @@ LiteLoaderBDS提供大量的API，直接对世界进行操作。
 如果你仍然感到困惑，没有准备好自己创建一个插件，请看我们的[教程](90_tutorials_index.md)。
 我们高度建议你阅读[死亡计数器](tutorials/death_counter.md)。这是对一个简单的玩家死亡计数器插件[LLDeathCounter](https://github.com/Futrime/LLDeathCounter)的分析。
 
+如果你想开始查看API，请从[Level类](#Level)开始查看。
+
 如果你对插件开发中更高级的技术感兴趣，请看我们的[指南](91_guides_index.md)。
 
 如果你对某些API有疑问，或者你想知道你的插件能用这些API做什么，请[查找类](/en/classes.html)。

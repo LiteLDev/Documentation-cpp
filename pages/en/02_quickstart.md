@@ -272,6 +272,8 @@ Press F5 to debug you plugin.
 If you are still confused and not ready to create a plugin on your own, please see our [tutorials](90_tutorials_index.md).
 We highly recommend you read [Death Counter](tutorials/death_counter.md), which is an analysis of [LLDeathCounter](https://github.com/Futrime/LLDeathCounter), a simple player death recorder.
 
+If you want to browse the APIs, start from [the Level class](#Level).
+
 If you are interested in more advanced techniques in plugin development, please see our [guides](91_guides_index.md).
 
 If you have doubt about certain APIs, or if you would like to know what can your plugin do with the APIs, please [lookup the classes](/en/classes.html).
