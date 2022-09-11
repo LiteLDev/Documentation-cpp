@@ -1,3 +1,3 @@
 # 定时器指南 {#schedule_howto}
 
-*待补充*
+请参考[Schedule命名空间](#Schedule)。

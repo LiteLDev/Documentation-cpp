@@ -1,3 +1,3 @@
 # Schedule How-To {#schedule_howto}
 
-*To be implemented*
+Please refer to [the Schedule namespace](#Schedule).
