@@ -194,24 +194,24 @@ Open `/src/Plugin.cpp`, and follow instructions below.
 
     ```cpp
     Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
-    // Give the item to the player
-    auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
-    event.mPlayer->giveItem(item);
-    delete item;
+      // Give the item to the player
+      auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
+      event.mPlayer->giveItem(item);
+      delete item;
 
-    // Show banner on every player's screen
-    auto all_player_list = Level::getAllPlayers();
-    for (auto* player : all_player_list) {
+      // Show banner on every player's screen
+      auto all_player_list = Level::getAllPlayers();
+      for (auto* player : all_player_list) {
         player->sendTitlePacket(
-        event.mPlayer->getRealName() + "joined",
-        TitleType::SetTitle,
-        /* FadeInDuration = */ 1,
-        /* RemainDuration = */ 3,
-        /* FadeOutDuration = */ 1
-        )
-    }
+          event.mPlayer->getRealName() + "joined",
+          TitleType::SetTitle,
+          /* FadeInDuration = */ 1,
+          /* RemainDuration = */ 3,
+          /* FadeOutDuration = */ 1
+        );
+      }
 
-    return true;
+      return true;
     });
     ```
 
@@ -232,24 +232,24 @@ Open `/src/Plugin.cpp`, and follow instructions below.
 
     ```cpp
     DynamicCommand::setup(
-    /* name = */ "latest",
-    /* description = */ "Get latest player.",
-    /* enums = */ {},
-    /* params = */ {},
-    /* overloads = */ {
+      /* name = */ "latest",
+      /* description = */ "Get latest player.",
+      /* enums = */ {},
+      /* params = */ {},
+      /* overloads = */ {
         {},
-    },
-    /* callback = */ [](
+      },
+      /* callback = */ [](
         DynamicCommand const& command,
         CommandOrigin const& origin,
         CommandOutput& output,
         std::unordered_map<std::string, DynamicCommand::Result>& results
-    ) {
+      ) {
         output.success(
-        std::string("The latest player's name is ") +
-        Global<Level>->getPlayer(latest_player_xuid)->getRealName()
+          std::string("The latest player's name is ") +
+          Global<Level>->getPlayer(latest_player_xuid)->getRealName()
         );
-    }
+      }
     );
     ```
 
@@ -265,7 +265,7 @@ Change **Solution Explorer** to CMake target view, right click on the project, a
 
 Then modify the project target value to the BDS executable `bedrock_server_mod.exe`.
 
-Press F5 to debug you plugin.
+Press F5 to debug your plugin.
 
 ## What's Next?
 

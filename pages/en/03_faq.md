@@ -13,3 +13,9 @@ You can also check the headers in `/` .
 You should start from [the Level class](#Level).
 
 If you want to create an object, you may be interested in the `create()` methods of classes.
+
+## Why does my plugin throw an SEH exception when initializing?
+
+When the function `PluginInit()` is called, the game is not loaded. If your plugin access anything related to the game, it is bound to throw an exception.
+
+Please access anything related to the game after `ServerStartedEvent` fires.

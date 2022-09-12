@@ -194,24 +194,24 @@ LiteLoaderBDS提供大量的API，直接对世界进行操作。
 
     ```cpp
     Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& event) {
-    // Give the item to the player
-    auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
-    event.mPlayer->giveItem(item);
-    delete item;
+      // Give the item to the player
+      auto* item = ItemStack::create("minecraft:emerald", /* count = */ 1);
+      event.mPlayer->giveItem(item);
+      delete item;
 
-    // Show banner on every player's screen
-    auto all_player_list = Level::getAllPlayers();
-    for (auto* player : all_player_list) {
+      // Show banner on every player's screen
+      auto all_player_list = Level::getAllPlayers();
+      for (auto* player : all_player_list) {
         player->sendTitlePacket(
-        event.mPlayer->getRealName() + "joined",
-        TitleType::SetTitle,
-        /* FadeInDuration = */ 1,
-        /* RemainDuration = */ 3,
-        /* FadeOutDuration = */ 1
-        )
-    }
+          event.mPlayer->getRealName() + "joined",
+          TitleType::SetTitle,
+          /* FadeInDuration = */ 1,
+          /* RemainDuration = */ 3,
+          /* FadeOutDuration = */ 1
+        );
+      }
 
-    return true;
+      return true;
     });
     ```
 
@@ -232,24 +232,24 @@ LiteLoaderBDS提供大量的API，直接对世界进行操作。
 
     ```cpp
     DynamicCommand::setup(
-    /* name = */ "latest",
-    /* description = */ "Get latest player.",
-    /* enums = */ {},
-    /* params = */ {},
-    /* overloads = */ {
+      /* name = */ "latest",
+      /* description = */ "Get latest player.",
+      /* enums = */ {},
+      /* params = */ {},
+      /* overloads = */ {
         {},
-    },
-    /* callback = */ [](
+      },
+      /* callback = */ [](
         DynamicCommand const& command,
         CommandOrigin const& origin,
         CommandOutput& output,
         std::unordered_map<std::string, DynamicCommand::Result>& results
-    ) {
+      ) {
         output.success(
-        std::string("The latest player's name is ") +
-        Global<Level>->getPlayer(latest_player_xuid)->getRealName()
+          std::string("The latest player's name is ") +
+          Global<Level>->getPlayer(latest_player_xuid)->getRealName()
         );
-    }
+      }
     );
     ```
 
