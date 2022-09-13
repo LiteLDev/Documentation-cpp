@@ -3,5 +3,8 @@ docs/en/*
 docs/api/*
 docs/zh-Hans/*
 
+# i18n generated files
+build/*
+
 # Visual Studio Code files
 .vscode

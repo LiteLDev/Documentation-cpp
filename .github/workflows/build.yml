@@ -18,7 +18,10 @@ jobs:
           submodules: true
 
       - name: Preprocess the SDK files
-        run: python preprocessor.py
+        run: python preprocess.py
+
+      - name: Apply the translations
+        run: python apply_translations.py
 
       - name: Generate API reference
         uses: mattnotmitt/doxygen-action@1.9.4

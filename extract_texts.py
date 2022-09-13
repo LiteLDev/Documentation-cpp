@@ -1,18 +1,16 @@
-"""!@package preprocessor
+"""!@package extract_texts
 @author Futrime (futrime@outlook.com)
-@brief The preprocessor for LiteLoaderSDK documentation
+@brief The text extractor for LiteLoaderSDK documentation
 @version 1.0.0
-@date 2022-08-28
+@date 2022-09-13
 
-@details This program preprocess the LiteLoaderSDK for Doxygen documentation
-         generation, removing all Doxygen comment blocks with \c \@symbol but
-         without \c \@brief in header files in the SDK.
+@details This program extract texts from the comments for i18n.
 
 @copyright Copyright (c) 2022 Futrime
 """
 
 """
-    LiteLoaderBDS C++ Documentation Preprocessor, a preprocessor for
+    LiteLoaderBDS C++ Documentation Text Extractor, a text extractor for
     the C++ documentation of LiteLoaderBDS.
     Copyright (C) 2022  Futrime
 
@@ -34,27 +32,36 @@
 
 import os
 import re
-
 regex_list = [
-    ' *\/\*{2}\n( +\* @hash.*\n| +\* @symbol.*\n| +\* @vftbl.*\n)* +\*\/\n', # comments before methods
-    ' *\/\*\*\n * \* @brief MC \w+ \w+\.\n * \*\n * \*\/\n' # comments before classes
+    '@brief .*',
+    '@note .*',
+    '@par .*',
+    '@param .*',
+    '@return .*',
+    '@tparam .*',
+    '@warning .*'
 ]
 
 if __name__ == '__main__':
     file_list = []
 
-    for root, dirs, files in os.walk('./SDK/Header/MC/'):
+    for root, dirs, files in os.walk('./SDK/Header/'):
         for file_name in files:
             file_list.append(os.path.join(root, file_name))
 
-    for file_path in file_list:
-        print('Preprocessing ' + file_path)
+    text_list = []
 
-        with open(file_path, 'r') as f:
+    for file_path in file_list:
+        print('Extracting texts from ' + file_path)
+
+        with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
         for regex in regex_list:
-            content = re.sub(regex, '', content)
+            text = re.search(regex, content)
+            if text:
+                text_list.append(str(text.group(0)))
 
-        with open(file_path, 'w') as f:
-            f.write(content)
+    with open('./i18n/en.txt', 'w', encoding='utf-8') as f:
+        for text in text_list:
+            f.write(text + '\n')
