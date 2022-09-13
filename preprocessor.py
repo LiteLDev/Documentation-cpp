@@ -34,6 +34,7 @@
 
 import os
 import re
+
 regex_list = [
     ' *\/\*{2}\n( +\* @hash.*\n| +\* @symbol.*\n| +\* @vftbl.*\n)* +\*\/\n', # comments before methods
     ' *\/\*\*\n * \* @brief MC \w+ \w+\.\n * \*\n * \*\/\n' # comments before classes

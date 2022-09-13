@@ -18,14 +18,14 @@ jobs:
         with:
           submodules: true
 
+      - name: Preprocess the SDK files
+        run: python preprocessor.py
+
       - name: Generate API reference
         uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_api
           additional-packages: graphviz
-
-      - name: Preprocess the SDK files
-        run: python preprocessor.py
 
       - name: Generate English documentation
         uses: mattnotmitt/doxygen-action@1.9.4
