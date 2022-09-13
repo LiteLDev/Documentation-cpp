@@ -33,13 +33,13 @@
 import os
 import re
 regex_list = [
-    '@brief .*',
-    '@note .*',
-    '@par .*',
-    '@param .*',
-    '@return .*',
-    '@tparam .*',
-    '@warning .*'
+    '@brief (.*)',
+    '@note (.*)',
+    '@par (.*)',
+    '@param +.* +(.*)',
+    '@return (.*)',
+    '@tparam +.* +(.*)',
+    '@warning (.*)'
 ]
 
 if __name__ == '__main__':
@@ -58,9 +58,7 @@ if __name__ == '__main__':
             content = f.read()
 
         for regex in regex_list:
-            text = re.search(regex, content)
-            if text:
-                text_list.append(str(text.group(0)))
+            text_list += re.findall(regex, content)
 
     with open('./i18n/en.txt', 'w', encoding='utf-8') as f:
         for text in text_list:
