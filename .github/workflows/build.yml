@@ -20,24 +20,35 @@ jobs:
       - name: Preprocess the SDK files
         run: python preprocessor.py
 
-      - name: Generate API reference
-        uses: mattnotmitt/doxygen-action@1.9.4
-        with:
-          doxyfile-path: ./Doxyfile_api
-          additional-packages: graphviz
+#       - name: Generate API reference
+#         uses: mattnotmitt/doxygen-action@1.9.4
+#         with:
+#           doxyfile-path: ./Doxyfile_api
+#           additional-packages: graphviz
 
-      - name: Generate English documentation
+      - name: Generate the English documentation
         uses: mattnotmitt/doxygen-action@1.9.4
         with:
           doxyfile-path: ./Doxyfile_en
           additional-packages: graphviz
 
-      - name: Generate Chinese documentation
-        uses: mattnotmitt/doxygen-action@1.9.4
+      - name: Translate the documentation
+        uses: crowdin/github-action@1.4.12
         with:
-          doxyfile-path: ./Doxyfile_zh-Hans
-          additional-packages: graphviz
-
+          upload_sources: true
+          download_translations: true
+          push_translations: false
+          create_pull_request: false
+          project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
+          token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          source: 'docs/en/**/*'
+          translation: 'docs/%two_letters_code%/**/%original_file_name%'
+          base_url: 'https://api.crowdin.com'
+          base_path: '.'
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          
       - name: Upload the pages artifact
         uses: actions/upload-pages-artifact@v1.0.3
         with:
