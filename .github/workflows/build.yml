@@ -42,11 +42,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1.0.3
         with:
           path: docs/
-          
-      - name: Upload the artifact
-        uses: actions/upload-artifact@v3.1.0
-        with:
-          path: docs/en/
 
   deploy:
     environment:
