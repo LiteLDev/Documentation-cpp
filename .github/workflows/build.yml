@@ -8,7 +8,6 @@ on:
     workflows:
       - Update SDK
     
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,8 +38,13 @@ jobs:
           doxyfile-path: ./Doxyfile_zh-Hans
           additional-packages: graphviz
 
-      - name: Upload the artifact
+      - name: Upload the pages artifact
         uses: actions/upload-pages-artifact@v1.0.3
+        with:
+          path: docs/
+          
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v3.1.0
         with:
           path: docs/
 
