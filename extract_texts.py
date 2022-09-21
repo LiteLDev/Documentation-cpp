@@ -33,13 +33,13 @@
 import os
 import re
 regex_list = [
-    '@brief *(.*)',
-    '@note *(.*)',
-    '@par *(.*)',
-    '@param +.* +(.*)',
-    '@return *(.*)',
-    '@tparam +.* +(.*)',
-    '@warning *(.*)'
+    '@brief +(.*)',
+    '@note +(.*)',
+    '@par +(.*)',
+    '@param +\S+ +(.*)',
+    '@return +(.*)',
+    '@tparam +\S+ +(.*)',
+    '@warning +(.*)'
 ]
 
 if __name__ == '__main__':
