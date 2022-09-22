@@ -144,12 +144,12 @@ First, the interaction with the Minecraft world.
 LiteLoaderBDS provides plentiful APIs performing operations to the world directly.
 Via these APIs, you can get an entity or a block, set a block, or run a line of command.
 However, the definitions of these APIs are not collected in a single header file, but splitted into multiple classes.
-You can refer to `/SDK/Header/GlobalServiceAPI.h` to see the classes containing these APIs.
+You can refer to `/SDK/include/llapi/GlobalServiceAPI.h` to see the classes containing these APIs.
 In this article, we will use the **Level** class, the most common class for plugin development.
 
 Second, the watcher on the occurrence of some events.
 Though BDS has not provided any event related APIs like those in GameTest, we hooked some common events for you.
-To check out all of them, you can have a glance at `/SDK/Header/EventAPI.h`.
+To check out all of them, you can have a glance at `/SDK/include/llapi/EventAPI.h`.
 In this article, we will use the **PlayerJoinEvent**.
 
 Following the instructions below, you will create a plugin giving every player an emerald and show welcome banner on every player's screen when they join the game as well as showing the latest joined player's name when someone types command `latest`.

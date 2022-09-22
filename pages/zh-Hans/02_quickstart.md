@@ -144,12 +144,12 @@
 LiteLoaderBDS提供大量的API，直接对世界进行操作。
 通过这些API，你可以获得一个实体或块，设置一个块，或运行一行命令。
 然而，这些API的定义并没有被收集在一个头文件中，而是被分割成多个类。
-你可以参考`/SDK/Header/GlobalServiceAPI.h`来查看包含这些API的类。
+你可以参考`/SDK/include/llapi/GlobalServiceAPI.h`来查看包含这些API的类。
 在本文中，我们将使用 **Level** 类，这是插件开发中最常见的类。
 
 第二，一些事件发生时的观察者。
 尽管BDS没有像GameTest中那样提供任何与事件相关的API，但我们为你勾画了一些常见的事件。
-要查看所有的事件，你可以看一下`/SDK/Header/EventAPI.h`。
+要查看所有的事件，你可以看一下`/SDK/include/llapi/EventAPI.h`。
 在这篇文章中，我们将使用 **PlayerJoinEvent** 。
 
 按照下面的说明，你将创建一个插件，给每个玩家一个绿宝石，并在每个玩家加入游戏时在屏幕上显示欢迎横幅，以及在有人输入命令`latest`时显示最新加入的玩家的名字。

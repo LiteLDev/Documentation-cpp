@@ -45,7 +45,7 @@ regex_list = [
 if __name__ == '__main__':
     file_list = []
 
-    for root, dirs, files in os.walk('./SDK/Header/'):
+    for root, dirs, files in os.walk('./SDK/include/llapi/'):
         for file_name in files:
             file_list.append(os.path.join(root, file_name))
 
