@@ -42,4 +42,4 @@ If you are contributing to the Doxygen comments in `/SDK/`, please go to [the ma
 
 You should modify the texts in different languages AT THE SAME TIME.
 Please firstly fork this repository and then create a pull request!
-Doxygen will then automatically generate the documentation along with these pages.
+Doxygen will then automatically generate the documentation along with these pages. 
