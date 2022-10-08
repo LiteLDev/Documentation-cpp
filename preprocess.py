@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
         if file_path[-4:] != '.hpp' and file_path[-2:] != '.h':
             os.remove(file_path)
+            continue
 
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
