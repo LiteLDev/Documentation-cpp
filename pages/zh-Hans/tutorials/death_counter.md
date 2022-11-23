@@ -26,13 +26,13 @@ LLDeathCounter是一个将玩家死亡次数记录并显示在暂停菜单中的
 所有 `#include` 代码如下：
 
 ```cpp
-#include <EventAPI.h>
-#include <ScheduleAPI.h>
+#include <llapi/EventAPI.h>
+#include <llapi/ScheduleAPI.h>
 
-#include <MC/Objective.hpp>
-#include <MC/Player.hpp>
-#include <MC/Scoreboard.hpp>
-#include <MC/Types.hpp>
+#include <llapi/MC/Objective.hpp>
+#include <llapi/MC/Player.hpp>
+#include <llapi/MC/Scoreboard.hpp>
+#include <llapi/MC/Types.hpp>
 #include <string>
 ```
 
