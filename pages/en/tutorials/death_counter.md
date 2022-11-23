@@ -26,13 +26,13 @@ At the same time, we should include some other headers to ensure every type pars
 All `#include` lines are:
 
 ```cpp
-#include <EventAPI.h>
-#include <ScheduleAPI.h>
+#include <llapi/EventAPI.h>
+#include <llapi/ScheduleAPI.h>
 
-#include <MC/Objective.hpp>
-#include <MC/Player.hpp>
-#include <MC/Scoreboard.hpp>
-#include <MC/Types.hpp>
+#include <llapi/MC/Objective.hpp>
+#include <llapi/MC/Player.hpp>
+#include <llapi/MC/Scoreboard.hpp>
+#include <llapi/MC/Types.hpp>
 #include <string>
 ```
 
