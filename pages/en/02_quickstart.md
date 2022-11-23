@@ -163,16 +163,16 @@ Open `/src/Plugin.cpp`, and follow instructions below.
     ```cpp
     #include <string>
 
-    #include <MC/CommandOrigin.hpp>
-    #include <MC/CommandOutput.hpp>
-    #include <MC/ItemStack.hpp>
-    #include <MC/Level.hpp>
-    #include <MC/Player.hpp>
-    #include <MC/Types.hpp>
+    #include <llapi/MC/CommandOrigin.hpp>
+    #include <llapi/MC/CommandOutput.hpp>
+    #include <llapi/MC/ItemStack.hpp>
+    #include <llapi/MC/Level.hpp>
+    #include <llapi/MC/Player.hpp>
+    #include <llapi/MC/Types.hpp>
 
-    #include <DynamicCommandAPI.h>
-    #include <EventAPI.h>
-    #include <GlobalServiceAPI.h>
+    #include <llapi/DynamicCommandAPI.h>
+    #include <llapi/EventAPI.h>
+    #include <llapi/GlobalServiceAPI.h>
     ```
 
     So many headers, right?
