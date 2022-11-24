@@ -40,6 +40,7 @@ If you are contributing to the general documentation, please go to [the reposito
 
 If you are contributing to the Doxygen comments in `/SDK/`, please go to [the main repository](https://github.com/LiteLDev/LiteLoaderBDS) and modify the files in `/LiteLoader/`.
 
-You should modify the texts in different languages AT THE SAME TIME.
+You should NOT modify the texts in different languages.
+If you are likely to contribute to internationalization, please go to [our crowdin project](https://crowdin.com/project/liteloaderbds).
 Please firstly fork this repository and then create a pull request!
 Doxygen will then automatically generate the documentation along with these pages. 
